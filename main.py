@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
+plt.rcParams.update({'font.size': 16})
 
 #reading The Datasets
 read=pd.read_csv('vgsales.csv')
@@ -36,3 +37,13 @@ st.pyplot(fig)
 st.sidebar.subheader('POPULAR_Platform')
 plat=read.Platform.value_counts(ascending=False)
 st.sidebar.write(plat)
+
+
+
+pub=read['Publisher'].value_counts().head(10)
+
+st.write(pub)
+
+fig=plt.figure(figsize=(5,7))
+sns.pairplot(read)
+st.pyplot(plt)
